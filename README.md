@@ -1,4 +1,4 @@
-# Чат-бот Telegram на базе YandexGPT для API Bitrix24
+# Чат-бот Telegram на базе YandexGPT5 для API Bitrix24
 
 Интеллектуальный чат-бот, отвечающий на вопросы разработчиков по документации API Bitrix24.
 
