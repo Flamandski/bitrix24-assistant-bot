@@ -1,0 +1,6 @@
+python-telegram-bot==21.9
+SQLAlchemy>=2.0.35
+psycopg[binary]
+python-dotenv==1.0.1
+selenium==4.18.1
+requests==2.31.0
