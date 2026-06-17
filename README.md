@@ -1,4 +1,4 @@
-# 🤖 Telegram-бот помощник по API Bitrix24 на базе YandexGPT
+# Telegram-бот помощник по API Bitrix24 на базе YandexGPT
 
 Интеллектуальный чат-бот для разработчиков, отвечающий на вопросы по официальной документации REST API Bitrix24. Использует LLM **YandexGPT** и технологию **RAG (Retrieval-Augmented Generation)** для поиска точных ответов в актуальной базе знаний.
 
@@ -7,17 +7,17 @@
 ![Telegram](https://img.shields.io/badge/Telegram-Bot-blue?logo=telegram)
 ![YandexGPT](https://img.shields.io/badge/YandexGPT-5-red?logo=yandex)
 
-## ✨ Возможности
+## Возможности
 
-- 💬 Отвечает на вопросы по API Bitrix24 на естественном языке
-- 📚 Использует актуальную документацию с `apidocs.bitrix24.ru` в качестве базы знаний
-- 🧠 Обработка запросов через YandexGPT 5 (Foundation Models API)
-- 🕷️ Автоматический парсинг документации через Selenium
-- 🗄️ Хранение данных в PostgreSQL через SQLAlchemy ORM
-- 📊 Ведение истории взаимодействий с пользователями
-- 🔒 Безопасное хранение секретов через `.env`
+- Отвечает на вопросы по API Bitrix24 на естественном языке
+- Использует актуальную документацию с `apidocs.bitrix24.ru` в качестве базы знаний
+- Обработка запросов через YandexGPT 5 (Foundation Models API)
+- Автоматический парсинг документации через Selenium
+- Хранение данных в PostgreSQL через SQLAlchemy ORM
+- Ведение истории взаимодействий с пользователями
+- Безопасное хранение секретов через `.env`
 
-## 🛠️ Технологический стек
+## Технологический стек
 
 | Технология | Версия | Назначение |
 |---|---|---|
@@ -31,9 +31,9 @@
 | PostgreSQL | 16 | Реляционная база данных |
 | YandexGPT | latest | LLM для генерации ответов |
 
-> ⚠️ **Важно:** Проект протестирован на **Python 3.13**. Использование Python 3.14 или ниже 3.12 может вызвать проблемы совместимости с библиотеками SQLAlchemy и psycopg.
+> **Важно:** Проект протестирован на **Python 3.13**. Использование Python 3.14 или ниже 3.12 может вызвать проблемы совместимости с библиотеками SQLAlchemy и psycopg.
 
-## 📁 Структура проекта
+## Структура проекта
 
 ```
 bitrix24-assistant-bot/
@@ -54,7 +54,7 @@ bitrix24-assistant-bot/
     └── telegram_bot.py     # Модуль интеграции с Telegram
 ```
 
-## 💻 Системные требования
+## Системные требования
 
 - **Python 3.13** (рекомендуется)
 - **PostgreSQL 16** (или новее)
@@ -62,7 +62,7 @@ bitrix24-assistant-bot/
 - **Учётная запись Yandex Cloud** с доступом к YandexGPT API
 - **Telegram-бот**, созданный через [@BotFather](https://t.me/BotFather)
 
-## 🚀 Установка и запуск
+## Установка и запуск
 
 ### Шаг 1: Клонирование репозитория
 
@@ -96,7 +96,14 @@ python3.13 -m venv venv
 source venv/bin/activate
 ```
 
-> 💡 После активации в начале строки терминала появится префикс `(venv)`.
+**Visual Studio Code**
+```powershell
+# Создаём виртуальное окружение на базе Python 3.13
+py -3.13 -m venv venv
+
+# Активируем окружение
+venv\Scripts\Activate.ps1
+```
 
 ### Шаг 3: Установка зависимостей
 
@@ -128,7 +135,7 @@ pip install -r requirements.txt
 
 #### Yandex Cloud IAM Token
 1. Получите OAuth-токен: https://oauth.yandex.ru/authorize?response_type=token&client_id=1a6990aa636648e9b2ef855fa7bec2fb
-2. Обменяйте его на IAM-токен (живёт 12 часов):
+2. Обменяйте его на IAM-токен (существует 12 часов):
    ```bash
    curl -X POST https://iam.api.cloud.yandex.net/iam/v1/tokens \
         -d '{"yandexPassportOauthToken":"ВАШ_OAUTH_TOKEN"}'
@@ -181,7 +188,7 @@ python main.py
 |---|---|---|
 | `TELEGRAM_BOT_TOKEN` | Токен Telegram-бота от [@BotFather](https://t.me/BotFather) | `1234567890:ABCdefGHIjklMNOpqrsTUVwxyz` |
 | `POSTGRES_USER` | Имя пользователя PostgreSQL | `postgres` |
-| `POSTGRES_PASSWORD` | Пароль от PostgreSQL | `my_secure_password` |
+| `POSTGRES_PASSWORD` | Пароль от PostgreSQL | `password` |
 | `POSTGRES_DB` | Название базы данных | `bitrix_bot_db` |
 | `POSTGRES_HOST` | Хост базы данных | `localhost` |
 | `POSTGRES_PORT` | Порт PostgreSQL | `5432` |
@@ -198,7 +205,7 @@ TELEGRAM_BOT_TOKEN=1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
 
 # PostgreSQL
 POSTGRES_USER=postgres
-POSTGRES_PASSWORD=MySecretPassword123
+POSTGRES_PASSWORD=Password
 POSTGRES_DB=bitrix_bot_db
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
@@ -212,7 +219,7 @@ YANDEX_FOLDER_ID=b1g1234567890abcdef
 SELENIUM_HEADLESS=True
 ```
 
-## 📖 Использование
+## Использование
 
 После запуска бота откройте Telegram и найдите своего бота по нику.
 
@@ -228,14 +235,7 @@ SELENIUM_HEADLESS=True
 ```
 
 
-## 📝 Обоснование выбора технологий
-
-### Почему SQLAlchemy?
-SQLAlchemy предоставляет мощный ORM-слой, который:
-- Защищает от SQL-инъекций через параметризованные запросы
-- Позволяет декларативно описывать модели через классы Python
-- Обеспечивает переносимость между СУБД (SQLite для тестов → PostgreSQL для продакшена)
-- Поддерживает связи между таблицами и отложенную загрузку
+## Обоснование выбора технологий
 
 ### Почему Selenium для парсинга?
 Документация Bitrix24 использует динамическую подгрузку контента через JavaScript (SPA-элементы). Стандартная связка `requests` + `BeautifulSoup` не может получить полный текст таких страниц. Selenium гарантирует, что мы заберём весь отрендеренный DOM.
@@ -246,7 +246,5 @@ SQLAlchemy предоставляет мощный ORM-слой, который:
 - Хранение базы знаний в собственной PostgreSQL (независимость от вендора)
 - Мгновенный SQL-поиск по документации вместо облачного RAG
 - Использование той же модели YandexGPT 5
+А так же в процессе интеграции возникла серьёзная проблема: новые OAuth-токены, выпущенные после июня 2026 года, перестали поддерживать автоматический обмен на IAM-токен через стандартный API. Решением стал ручной обмен OAuth-токена на IAM-токен через curl и использование IAM-токена напрямую в заголовках запросов. Также возникала путаница между различными типами идентификаторов в консоли Yandex Cloud: ID сервисного аккаунта (начинается на aje...), ID каталога (начинается на b1g...) и ID ассистента имеют схожий формат. При использовании ID сервисного аккаунта вместо ID ассистента API возвращал ошибку 404. Именно это и стало причиной перехода на прямой вызов YandexGPT через Foundation Models API, который требует только Folder ID и не зависит от ID ассистента. Следует отметить, что IAM-токен имеет ограниченный срок жизни в 12 часов, что требует периодического обновления. Для учебного проекта это приемлемо, но для продакшена рекомендуется использовать авторизованный ключ сервисного аккаунта.
 
-## 📄 Лицензия
-
-Учебный проект. Создан в рамках практики по интеграции с Yandex Assistant.
